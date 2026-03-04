@@ -1,65 +1,106 @@
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="relative flex min-h-screen flex-col overflow-hidden bg-[#06060a] font-sans">
+      {/* Background layers */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <div className="absolute -left-[35%] -top-[50%] h-[100%] w-[90%] rounded-full bg-violet-600/20 blur-[140px] animate-glow-pulse" />
+        <div className="absolute -bottom-[40%] -right-[20%] h-[80%] w-[70%] rounded-full bg-fuchsia-600/15 blur-[120px] animate-float" />
+        <div className="absolute left-1/2 top-1/2 h-[50%] w-[60%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-600/10 blur-[100px]" />
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.15) 1px, transparent 0)`,
+            backgroundSize: "48px 48px",
+          }}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+        <div
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: `linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px)`,
+            backgroundSize: "80px 80px",
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 flex min-h-screen flex-col">
+        {/* Top bar */}
+        <header className="flex items-center justify-between px-6 py-5 sm:px-8">
+          <span className="font-display text-lg font-semibold tracking-tight text-white">
+            AI Project
+          </span>
+          <Link
+            href="/chat"
+            className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-zinc-300 transition-colors hover:border-violet-500/40 hover:bg-violet-500/10 hover:text-white"
+          >
+            Go to chat
+          </Link>
+        </header>
+
+        {/* Hero */}
+        <main className="flex flex-1 flex-col items-center justify-center px-6 pb-24 pt-8 text-center sm:px-8">
+          <p className="font-display mb-4 text-sm font-medium uppercase tracking-[0.2em] text-violet-400/90">
+            AI assistant
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <h1 className="font-display max-w-4xl text-5xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-6xl md:text-7xl">
+            Ask your questions.
+            <br />
+            <span className="bg-gradient-to-r from-violet-400 via-fuchsia-400 to-violet-400 bg-clip-text text-transparent">
+              Get answers.
+            </span>
+          </h1>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-zinc-400">
+            Instant answers, code examples, and ideas with our text-based chat
+            assistant. Try it free.
+          </p>
+
+          {/* CTA */}
+          <Link
+            href="/chat"
+            className="group mt-10 inline-flex items-center gap-3 rounded-2xl bg-white px-8 py-4 text-base font-semibold text-black shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_2px_4px_rgba(0,0,0,0.2)] transition-all hover:bg-zinc-100 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.2),0_8px_24px_-8px_rgba(139,92,246,0.4)] active:scale-[0.98]"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+            Start chatting
+            <svg
+              className="h-5 w-5 transition-transform group-hover:translate-x-0.5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2.5}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
+            </svg>
+          </Link>
+
+          {/* Features */}
+          <ul className="mt-14 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-zinc-500">
+            <li className="flex items-center gap-2">
+              <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              Instant answers
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="flex h-1.5 w-1.5 rounded-full bg-violet-500" />
+              Code & explanation
+            </li>
+            <li className="flex items-center gap-2">
+              <span className="flex h-1.5 w-1.5 rounded-full bg-fuchsia-500" />
+              Free to use
+            </li>
+          </ul>
+        </main>
+
+        {/* Footer */}
+        <footer className="relative z-10 border-t border-white/5 px-6 py-4 sm:px-8">
+          <p className="text-center text-xs text-zinc-600">
+            AI Project · Chat assistant
+          </p>
+        </footer>
+      </div>
     </div>
   );
 }
